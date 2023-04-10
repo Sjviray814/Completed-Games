@@ -1,0 +1,140 @@
+<html>
+  <head>
+    
+    
+  </head>
+  <body>
+    <canvas id="canvas" width="900" height="600"></canvas>
+    <div id="bird"></div>
+    
+    <style>
+    
+    </style>
+    
+    
+    <script>
+      var canvas;
+      var canvasContext;
+      var birdX = 100;
+      var birdY = 200;
+      var birdSpeedY=2;
+      var birdHeight = 20;
+      var pipeWidth = 80;
+      var pipeX = 900 - pipeWidth;
+      var randomHeight = Math.floor(Math.random() * 100) * 4.6;
+      var bottomY = (randomHeight +150) ;
+      var bottomHeight = 600 - bottomY
+      var pipeSpeed =2;
+      var myScore = 0;
+      var scoreDisplay = 'your final score was ' + myScore;
+      var clock = setInterval(clock, 1000);
+      
+      
+   window.onload=function(){
+      canvas = document.getElementById('canvas');
+      canvasContext= canvas.getContext('2d');
+      
+      var framesPerSecond = 100
+      setInterval(doBoth, 1000/framesPerSecond);
+      clock;
+      
+      
+      canvas.addEventListener('click', function(){
+        if (birdSpeedY > 0){
+          birdSpeedY = -birdSpeedY
+        }
+        else if (birdSpeedY < 0){
+          birdSpeedY = -birdSpeedY;
+        }
+        else if (birdSpeedY == 0){
+          if (birdY>=canvas.height-birdHeight){
+            birdSpeedY = -2;
+          }
+          else if (birdY <=0){
+            birdSpeedY = 2;
+          }
+        }
+      });
+      
+    
+  }
+    function doBoth(){
+      moveEverything();
+      drawEverything();
+    }
+    function moveEverything(){
+      birdY+=birdSpeedY
+      if (birdY >= (canvas.height-birdHeight)){
+        birdSpeedY=0;
+      }
+      else if (birdY <= 0){
+        birdSpeedY = 0;
+      }
+      pipeX -= pipeSpeed;
+      if (pipeX <= 0){
+        pipeX = 900 - pipeWidth;
+        randomHeight = Math.floor(Math.random() * 100) * 4.6;
+        bottomY = (randomHeight +150) - (myScore/2);
+        bottomHeight = 600 - bottomY;
+        
+      }
+      if (birdX+40 >= pipeX && birdX + 40 <= pipeX + pipeWidth){
+        if (birdY <= randomHeight || birdY+20 >= bottomY){
+          gameEnd()
+        }
+      }
+      
+    }
+    
+    
+    function drawEverything(){
+      create(0, 0, canvas.width, canvas.height, 'skyblue');
+      
+      create(birdX, birdY, 40, birdHeight, 'yellow');
+      
+      makeObs();
+      
+      
+      canvasContext.font='40px serif';
+      canvasContext.fillStyle='red';
+      canvasContext.fillText(myScore, 200, 100);
+      
+    }
+
+  function create(x, y, width, height, color){
+    canvasContext.fillStyle=color;
+    canvasContext.fillRect(x, y, width, height);
+  }
+  
+  function makeObs(){
+      //top pipe:
+    create(pipeX, 0, pipeWidth, randomHeight, 'lime');
+    //bottom pipe:
+    create(pipeX, bottomY, pipeWidth, bottomHeight, 'lime');
+  }
+  
+  function clock(){
+    myScore +=1;
+  }
+  
+  function gameEnd(){
+    pipeSpeed=0;
+    birdSpeedY = 0;
+    clearInterval(clock);
+  }
+      
+      
+      
+      
+      
+      
+      
+    </script>
+    
+    
+    
+  </body>
+  
+  
+  
+</html>

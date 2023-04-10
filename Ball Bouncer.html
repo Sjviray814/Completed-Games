@@ -1,0 +1,254 @@
+<html>
+  <head>
+    
+    
+  </head>
+  <body>
+    <canvas id="canvas" width="1350" height="630"></canvas>
+      
+
+      
+    
+    <style>
+    
+    </style>
+    
+    
+    <script>
+      var canvas = document.getElementById('canvas');
+      var canvasContext;
+      var minBallSize = 80;
+        
+        
+      var ball1X = canvas.width/2;
+      var ball1Y = canvas.height/2;
+      var ball1XSpeed = ((Math.random() * 200) /100 + .3) ;
+      var ball1YSpeed = ((Math.random() * 200) /100 + .3) ;
+      var ball1R = (Math.random() * 20) + minBallSize;
+      var randBall1X = Math.floor(Math.random() * 2);
+      var randBall1Y = Math.floor(Math.random() * 2);
+      var color1 = '#' + Math.floor(Math.random()*16777215).toString(16);
+        
+        if (randBall1X == 0){
+           ball1XSpeed=-ball1XSpeed;
+      }
+        if (randBall1Y == 0){
+           ball1YSpeed=-ball1YSpeed;
+      }
+
+        
+        
+        
+        
+      var ball2X = canvas.width/2;
+      var ball2Y = canvas.height/2;
+      var ball2XSpeed = ((Math.random() * 200) /100 + .3) ;
+      var ball2YSpeed = ((Math.random() * 200) /100 + .3) ;
+      var ball2R = (Math.random() * 20) + minBallSize;
+      var randBall2X = Math.floor(Math.random() * 2);
+      var randBall2Y = Math.floor(Math.random() * 2);
+      var color2 = '#' + Math.floor(Math.random()*16777215).toString(16);
+        
+        if (randBall2X == 0){
+           ball2XSpeed=-ball2XSpeed;
+      }
+        if (randBall2Y == 0){
+           ball2YSpeed=-ball2YSpeed;
+      }
+
+var ball3X = canvas.width/2,  ball3Y = canvas.height/2,  ball3XSpeed = ((Math.random() * 200) /300 + .3),  ball3YSpeed = ((Math.random() * 200) /300 + .3),  ball3R = (Math.random() * 20) + minBallSize,  randBall3X = Math.floor(Math.random() * 2),  randBall3Y = Math.floor(Math.random() * 2),  color3 = '#' + Math.floor(Math.random()*16777235).toString(16);if (randBall3X == 0){ball3XSpeed=-ball3XSpeed;}if (randBall3Y == 0){ball3YSpeed=-ball3YSpeed;}
+      
+var ball4X = canvas.width/2,  ball4Y = canvas.height/2,  ball4XSpeed = ((Math.random() * 200) /300 + .3),  ball4YSpeed = ((Math.random() * 200) /300 + .3),  ball4R = (Math.random() * 20) + minBallSize,  randBall4X = Math.floor(Math.random() * 2),  randBall4Y = Math.floor(Math.random() * 2),  color4 = '#' + Math.floor(Math.random()*16777235).toString(16);if (randBall4X == 0){ball4XSpeed=-ball4XSpeed;}if (randBall4Y == 0){ball4YSpeed=-ball4YSpeed;}
+        
+var ball5X = canvas.width/2,  ball5Y = canvas.height/2,  ball5XSpeed = ((Math.random() * 200) /300 + .3),  ball5YSpeed = ((Math.random() * 200) /300 + .3),  ball5R = (Math.random() * 20) + minBallSize,  randBall5X = Math.floor(Math.random() * 2),  randBall5Y = Math.floor(Math.random() * 2),  color5 = '#' + Math.floor(Math.random()*16777235).toString(16);if (randBall5X == 0){ball5XSpeed=-ball5XSpeed;}if (randBall5Y == 0){ball5YSpeed=-ball5YSpeed;}
+
+var ball6X = canvas.width/2,  ball6Y = canvas.height/2,  ball6XSpeed = ((Math.random() * 200) /300 + .3),  ball6YSpeed = ((Math.random() * 200) /300 + .3),  ball6R = (Math.random() * 20) + minBallSize,  randBall6X = Math.floor(Math.random() * 2),  randBall6Y = Math.floor(Math.random() * 2),  color6 = '#' + Math.floor(Math.random()*16777235).toString(16);if (randBall6X == 0){ball6XSpeed=-ball6XSpeed;}if (randBall6Y == 0){ball6YSpeed=-ball6YSpeed;}
+        
+var ball7X = canvas.width/2,  ball7Y = canvas.height/2,  ball7XSpeed = ((Math.random() * 200) /300 + .3),  ball7YSpeed = ((Math.random() * 200) /300 + .3),  ball7R = (Math.random() * 20) + minBallSize,  randBall7X = Math.floor(Math.random() * 2),  randBall7Y = Math.floor(Math.random() * 2),  color7 = '#' + Math.floor(Math.random()*16777235).toString(16);if (randBall7X == 0){ball7XSpeed=-ball7XSpeed;}if (randBall7Y == 0){ball7YSpeed=-ball7YSpeed;}        
+
+var ball8X = canvas.width/2,  ball8Y = canvas.height/2,  ball8XSpeed = ((Math.random() * 200) /300 + .3),  ball8YSpeed = ((Math.random() * 200) /300 + .3),  ball8R = (Math.random() * 20) + minBallSize,  randBall8X = Math.floor(Math.random() * 2),  randBall8Y = Math.floor(Math.random() * 2),  color8 = '#' + Math.floor(Math.random()*16777235).toString(16);if (randBall8X == 0){ball8XSpeed=-ball8XSpeed;}if (randBall8Y == 0){ball8YSpeed=-ball8YSpeed;}      
+      
+var ball9X = canvas.width/2,  ball9Y = canvas.height/2,  ball9XSpeed = ((Math.random() * 200) /300 + .3),  ball9YSpeed = ((Math.random() * 200) /300 + .3),  ball9R = (Math.random() * 20) + minBallSize,  randBall9X = Math.floor(Math.random() * 2),  randBall9Y = Math.floor(Math.random() * 2),  color9 = '#' + Math.floor(Math.random()*16777235).toString(16);if (randBall9X == 0){ball9XSpeed=-ball9XSpeed;}if (randBall9Y == 0){ball9YSpeed=-ball9YSpeed;}        
+        
+var ball10X = canvas.width/2,  ball10Y = canvas.height/2,  ball10XSpeed = ((Math.random() * 200) /300 + .3),  ball10YSpeed = ((Math.random() * 200) /300 + .3),  ball10R = (Math.random() * 20) + minBallSize,  randBall10X = Math.floor(Math.random() * 2),  randBall10Y = Math.floor(Math.random() * 2),  color10 = '#' + Math.floor(Math.random()*16777235).toString(16);if (randBall10X == 0){ball10XSpeed=-ball10XSpeed;}if (randBall10Y == 0){ball10YSpeed=-ball10YSpeed;}        
+        
+var ball11X = canvas.width/2,  ball11Y = canvas.height/2,  ball11XSpeed = ((Math.random() * 200) /300 + .3),  ball11YSpeed = ((Math.random() * 200) /300 + .3),  ball11R = (Math.random() * 20) + minBallSize,  randBall11X = Math.floor(Math.random() * 2),  randBall11Y = Math.floor(Math.random() * 2),  color11 = '#' + Math.floor(Math.random()*16777235).toString(16);if (randBall11X == 0){ball11XSpeed=-ball11XSpeed;}if (randBall11Y == 0){ball11YSpeed=-ball11YSpeed;}        
+        
+var ball12X = canvas.width/2,  ball12Y = canvas.height/2,  ball12XSpeed = ((Math.random() * 200) /300 + .3),  ball12YSpeed = ((Math.random() * 200) /300 + .3),  ball12R = (Math.random() * 20) + minBallSize,  randBall12X = Math.floor(Math.random() * 2),  randBall12Y = Math.floor(Math.random() * 2),  color12 = '#' + Math.floor(Math.random()*16777235).toString(16);if (randBall12X == 0){ball12XSpeed=-ball12XSpeed;}if (randBall12Y == 0){ball12YSpeed=-ball12YSpeed;}
+        
+var ball13X = canvas.width/2,  ball13Y = canvas.height/2,  ball13XSpeed = ((Math.random() * 200) /300 + .3),  ball13YSpeed = ((Math.random() * 200) /300 + .3),  ball13R = (Math.random() * 20) + minBallSize,  randBall13X = Math.floor(Math.random() * 2),  randBall13Y = Math.floor(Math.random() * 2),  color13 = '#' + Math.floor(Math.random()*16777235).toString(16);if (randBall13X == 0){ball13XSpeed=-ball13XSpeed;}if (randBall13Y == 0){ball13YSpeed=-ball13YSpeed;}        
+        
+var ball14X = canvas.width/2,  ball14Y = canvas.height/2,  ball14XSpeed = ((Math.random() * 200) /300 + .3),  ball14YSpeed = ((Math.random() * 200) /300 + .3),  ball14R = (Math.random() * 20) + minBallSize,  randBall14X = Math.floor(Math.random() * 2),  randBall14Y = Math.floor(Math.random() * 2),  color14 = '#' + Math.floor(Math.random()*16777235).toString(16);if (randBall14X == 0){ball14XSpeed=-ball14XSpeed;}if (randBall14Y == 0){ball14YSpeed=-ball14YSpeed;}        
+        
+var ball15X = canvas.width/2,  ball15Y = canvas.height/2,  ball15XSpeed = ((Math.random() * 200) /300 + .3),  ball15YSpeed = ((Math.random() * 200) /300 + .3),  ball15R = (Math.random() * 20) + minBallSize,  randBall15X = Math.floor(Math.random() * 2),  randBall15Y = Math.floor(Math.random() * 2),  color15 = '#' + Math.floor(Math.random()*16777235).toString(16);if (randBall15X == 0){ball15XSpeed=-ball15XSpeed;}if (randBall15Y == 0){ball15YSpeed=-ball15YSpeed;}        
+        
+        
+        
+        
+        
+        
+        
+            
+   window.onload=function(){
+      canvas = document.getElementById('canvas');
+      canvasContext= canvas.getContext('2d');
+      
+      var framesPerSecond = 100
+      setInterval(doBoth, 1000/framesPerSecond);
+ 
+  }
+    function doBoth(){
+      moveEverything();
+      drawEverything();
+      
+    }
+    function moveEverything(){
+        ball1Move();
+        ball1Reflect();
+        ball2Move();
+        ball2Reflect();
+        ball3Move();
+        ball3Reflect();
+        ball4Move();
+        ball4Reflect();
+        ball5Move();
+        ball5Reflect();
+        ball6Move();
+        ball6Reflect();
+        ball7Move();
+        ball7Reflect();
+        ball8Move();
+        ball8Reflect();
+        ball9Move();
+        ball9Reflect();
+        ball10Move();
+        ball10Reflect();
+        ball11Move();
+        ball11Reflect();
+        ball12Move();
+        ball12Reflect();
+        ball13Move();
+        ball13Reflect();
+        ball14Move();
+        ball14Reflect();
+        ball15Move();
+        ball15Reflect();        
+    }
+    
+    
+    function drawEverything(){
+      create(0, 0, canvas.width, canvas.height, 'black');
+      ball1Draw();
+      ball2Draw();
+      ball3Draw();
+      ball4Draw();
+      ball5Draw();
+      ball6Draw();
+      ball7Draw();
+      ball8Draw();
+      ball9Draw();
+      ball10Draw();
+      ball11Draw();
+      ball12Draw();
+      ball13Draw();
+      ball14Draw();
+      ball15Draw();
+        
+    }
+
+  function create(x, y, width, height, color){
+    canvasContext.fillStyle=color;
+    canvasContext.fillRect(x, y, width, height);
+  }
+    
+  function Ball(x, y, r, color){
+      canvasContext.fillStyle=color;
+      canvasContext.beginPath();
+      canvasContext.arc(x, y, r, 0, 2 * Math.PI, false);
+      canvasContext.fill();
+  }
+        
+    
+  function ball1Draw(){
+       Ball(ball1X, ball1Y, ball1R, color1);
+  }
+  function ball1Move(){
+      ball1X += ball1XSpeed;
+      ball1Y += ball1YSpeed;
+  }
+ function ball1Reflect(){
+      // left side reflect:
+      if (ball1X-ball1R <= 0){
+          ball1XSpeed = -ball1XSpeed;
+      }
+      else if(ball1X+ball1R >= canvas.width){
+          ball1XSpeed = -ball1XSpeed;
+      }
+     if(ball1Y-ball1R <=0){
+         ball1YSpeed = -ball1YSpeed;
+     }
+     if(ball1Y+ball1R >= canvas.height){
+         ball1YSpeed = -ball1YSpeed;
+     }
+  }
+        
+        
+        
+  function ball2Draw(){
+       Ball(ball2X, ball2Y, ball2R, color2);
+  }
+  function ball2Move(){
+      ball2X += ball2XSpeed;
+      ball2Y += ball2YSpeed;
+  }
+  function ball2Reflect(){
+      // left side reflect:
+      if (ball2X-ball2R <= 0){
+          ball2XSpeed = -ball2XSpeed;
+      }
+      else if(ball2X+ball2R >= canvas.width){
+          ball2XSpeed = -ball2XSpeed;
+      }
+     if(ball2Y-ball2R <=0){
+         ball2YSpeed = -ball2YSpeed;
+     }
+     if(ball2Y+ball2R >= canvas.height){
+         ball2YSpeed = -ball2YSpeed;
+     }
+  }
+      
+      
+function ball3Draw() {Ball(ball3X, ball3Y, ball3R, color3);}function ball3Move() {ball3X += ball3XSpeed,ball3Y += ball3YSpeed;}function ball3Reflect() {if (ball3X - ball3R <= 0) {ball3XSpeed = -ball3XSpeed;} else if (ball3X + ball3R >= canvas.width) {ball3XSpeed = -ball3XSpeed;}if (ball3Y - ball3R <= 0) {ball3YSpeed = -ball3YSpeed;}if (ball3Y + ball3R >= canvas.height) {ball3YSpeed = -ball3YSpeed;}}      
+      
+function ball4Draw() {Ball(ball4X, ball4Y, ball4R, color4);}function ball4Move() {ball4X += ball4XSpeed,ball4Y += ball4YSpeed;}function ball4Reflect() {if (ball4X - ball4R <= 0) {ball4XSpeed = -ball4XSpeed;} else if (ball4X + ball4R >= canvas.width) {ball4XSpeed = -ball4XSpeed;}if (ball4Y - ball4R <= 0) {ball4YSpeed = -ball4YSpeed;}if (ball4Y + ball4R >= canvas.height) {ball4YSpeed = -ball4YSpeed;}}       
+      
+function ball5Draw() {Ball(ball5X, ball5Y, ball5R, color5);}function ball5Move() {ball5X += ball5XSpeed,ball5Y += ball5YSpeed;}function ball5Reflect() {if (ball5X - ball5R <= 0) {ball5XSpeed = -ball5XSpeed;} else if (ball5X + ball5R >= canvas.width) {ball5XSpeed = -ball5XSpeed;}if (ball5Y - ball5R <= 0) {ball5YSpeed = -ball5YSpeed;}if (ball5Y + ball5R >= canvas.height) {ball5YSpeed = -ball5YSpeed;}}       
+ 
+function ball6Draw() {Ball(ball6X, ball6Y, ball6R, color6);}function ball6Move() {ball6X += ball6XSpeed,ball6Y += ball6YSpeed;}function ball6Reflect() {if (ball6X - ball6R <= 0) {ball6XSpeed = -ball6XSpeed;} else if (ball6X + ball6R >= canvas.width) {ball6XSpeed = -ball6XSpeed;}if (ball6Y - ball6R <= 0) {ball6YSpeed = -ball6YSpeed;}if (ball6Y + ball6R >= canvas.height) {ball6YSpeed = -ball6YSpeed;}}         
+        
+function ball7Draw() {Ball(ball7X, ball7Y, ball7R, color7);}function ball7Move() {ball7X += ball7XSpeed,ball7Y += ball7YSpeed;}function ball7Reflect() {if (ball7X - ball7R <= 0) {ball7XSpeed = -ball7XSpeed;} else if (ball7X + ball7R >= canvas.width) {ball7XSpeed = -ball7XSpeed;}if (ball7Y - ball7R <= 0) {ball7YSpeed = -ball7YSpeed;}if (ball7Y + ball7R >= canvas.height) {ball7YSpeed = -ball7YSpeed;}}         
+        
+function ball8Draw() {Ball(ball8X, ball8Y, ball8R, color8);}function ball8Move() {ball8X += ball8XSpeed,ball8Y += ball8YSpeed;}function ball8Reflect() {if (ball8X - ball8R <= 0) {ball8XSpeed = -ball8XSpeed;} else if (ball8X + ball8R >= canvas.width) {ball8XSpeed = -ball8XSpeed;}if (ball8Y - ball8R <= 0) {ball8YSpeed = -ball8YSpeed;}if (ball8Y + ball8R >= canvas.height) {ball8YSpeed = -ball8YSpeed;}}        
+        
+function ball9Draw() {Ball(ball9X, ball9Y, ball9R, color9);}function ball9Move() {ball9X += ball9XSpeed,ball9Y += ball9YSpeed;}function ball9Reflect() {if (ball9X - ball9R <= 0) {ball9XSpeed = -ball9XSpeed;} else if (ball9X + ball9R >= canvas.width) {ball9XSpeed = -ball9XSpeed;}if (ball9Y - ball9R <= 0) {ball9YSpeed = -ball9YSpeed;}if (ball9Y + ball9R >= canvas.height) {ball9YSpeed = -ball9YSpeed;}}       
+function ball10Draw() {Ball(ball10X, ball10Y, ball10R, color10);}function ball10Move() {ball10X += ball10XSpeed,ball10Y += ball10YSpeed;}function ball10Reflect() {if (ball10X - ball10R <= 0) {ball10XSpeed = -ball10XSpeed;} else if (ball10X + ball10R >= canvas.width) {ball10XSpeed = -ball10XSpeed;}if (ball10Y - ball10R <= 0) {ball10YSpeed = -ball10YSpeed;}if (ball10Y + ball10R >= canvas.height) {ball10YSpeed = -ball10YSpeed;}}
+        
+function ball11Draw() {Ball(ball11X, ball11Y, ball11R, color11);}function ball11Move() {ball11X += ball11XSpeed,ball11Y += ball11YSpeed;}function ball11Reflect() {if (ball11X - ball11R <= 0) {ball11XSpeed = -ball11XSpeed;} else if (ball11X + ball11R >= canvas.width) {ball11XSpeed = -ball11XSpeed;}if (ball11Y - ball11R <= 0) {ball11YSpeed = -ball11YSpeed;}if (ball11Y + ball11R >= canvas.height) {ball11YSpeed = -ball11YSpeed;}}         
+        
+function ball12Draw() {Ball(ball12X, ball12Y, ball12R, color12);}function ball12Move() {ball12X += ball12XSpeed,ball12Y += ball12YSpeed;}function ball12Reflect() {if (ball12X - ball12R <= 0) {ball12XSpeed = -ball12XSpeed;} else if (ball12X + ball12R >= canvas.width) {ball12XSpeed = -ball12XSpeed;}if (ball12Y - ball12R <= 0) {ball12YSpeed = -ball12YSpeed;}if (ball12Y + ball12R >= canvas.height) {ball12YSpeed = -ball12YSpeed;}}
+        
+function ball13Draw() {Ball(ball13X, ball13Y, ball13R, color13);}function ball13Move() {ball13X += ball13XSpeed,ball13Y += ball13YSpeed;}function ball13Reflect() {if (ball13X - ball13R <= 0) {ball13XSpeed = -ball13XSpeed;} else if (ball13X + ball13R >= canvas.width) {ball13XSpeed = -ball13XSpeed;}if (ball13Y - ball13R <= 0) {ball13YSpeed = -ball13YSpeed;}if (ball13Y + ball13R >= canvas.height) {ball13YSpeed = -ball13YSpeed;}}        
+        
+function ball14Draw() {Ball(ball14X, ball14Y, ball14R, color14);}function ball14Move() {ball14X += ball14XSpeed,ball14Y += ball14YSpeed;}function ball14Reflect() {if (ball14X - ball14R <= 0) {ball14XSpeed = -ball14XSpeed;} else if (ball14X + ball14R >= canvas.width) {ball14XSpeed = -ball14XSpeed;}if (ball14Y - ball14R <= 0) {ball14YSpeed = -ball14YSpeed;}if (ball14Y + ball14R >= canvas.height) {ball14YSpeed = -ball14YSpeed;}}
+        
+function ball15Draw() {Ball(ball15X, ball15Y, ball15R, color15);}function ball15Move() {ball15X += ball15XSpeed,ball15Y += ball15YSpeed;}function ball15Reflect() {if (ball15X - ball15R <= 0) {ball15XSpeed = -ball15XSpeed;} else if (ball15X + ball15R >= canvas.width) {ball15XSpeed = -ball15XSpeed;}if (ball15Y - ball15R <= 0) {ball15YSpeed = -ball15YSpeed;}if (ball15Y + ball15R >= canvas.height) {ball15YSpeed = -ball15YSpeed;}}        
+        
+    </script>
+    
+    
+    
+  </body>
+  
+  
+  
+</html>

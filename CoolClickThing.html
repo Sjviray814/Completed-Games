@@ -1,0 +1,156 @@
+<html>
+  <head>
+    
+    
+  </head>
+  <body>
+    <canvas id="canvas" width="1350" height="630" color="black"></canvas>
+    
+    <style>
+
+    </style>
+    
+    
+    <script>
+      var canvas = document.getElementById('canvas');
+      var canvasContext= canvas.getContext('2d');
+      var mX;
+      var mY;
+      var loops = 0;
+      var shadeX = [];
+      var shadeY = [];
+      var counter = 0;
+      var color = 'red';
+      
+      
+      
+   window.onload=function(){
+      canvas = document.getElementById('canvas');
+      canvasContext= canvas.getContext('2d');
+      
+      var framesPerSecond = 100
+      setInterval(doBoth, 1000/framesPerSecond);
+       setInterval(updateLoops, 200);
+ 
+  }
+   window.onclick=function(e){
+        color = 'red';
+        loops = 0;
+        mX=Math.floor((e.pageX-10)/30);
+        mY= Math.floor((e.pageY-10)/30);
+        shadeX = [];
+        shadeY = [];
+        shadeX.push(mX);
+        shadeY.push(mY);
+        
+        
+   }
+        
+        
+        
+    function doBoth(){
+      moveEverything();
+      drawEverything();
+    }
+    function moveEverything(){
+        update();
+      
+    }
+    
+    
+    function drawEverything(){
+      create(0, 0, canvas.width, canvas.height, 'black');
+      drawGrid();
+      
+    }
+
+  function create(x, y, width, height, color){
+    canvasContext.fillStyle=color;
+    canvasContext.fillRect(x, y, width, height);
+  }
+        
+  function drawGrid(){
+      for(var i = 0; i < 63; i++){
+          create(30 * i, 0, 1, 630, 'blue');
+      }
+      for(var j = 0; j < 45; j++){
+          create(0, 30 * j, 1350, 1, 'blue');
+      }
+      for(var k = 0; k < 45; k++){
+            for(var l=0; l < 63; l++){
+                new Box(30*l + 1, 30*k + 1)
+            }
+          
+      }
+      
+      
+  }
+        
+    
+   //Find the number of loops that determines color, make something that holds all of the good squares,      
+   class Box{
+       constructor(x, y){  
+               this.gridPosX = Math.floor(x / 30);
+               this.gridPosY = Math.floor(y / 30);
+               shadeX.includes(this.gridPosX) && shadeY.includes(this.gridPosY) && (this.gridPosX == mX + loops || this.gridPosX == mX - loops || this.gridPosY == mY + loops || this.gridPosY == mY - loops) ? this.color= color : this.color="black";
+               
+           
+               
+               loops > 5 ? this.color = 'black' : null;           
+           
+               create(x, y, 28, 28, this.color);
+               
+       }
+   }
+        
+   function update(){
+       
+       
+       for (let i = -loops; i <= loops; i++) {
+          shadeX.push(i + mX);
+          shadeY.push(i + mY);
+    }
+       
+        
+   }
+   function updateLoops(){
+       loops = loops+=1;
+       if(loops == 0){
+           color = 'red';
+       }
+       else if(loops == 1){
+           color = 'red';
+       }
+       else if(loops == 2){
+           color = 'orange';
+       }
+       else if(loops == 3){
+           color = '#fffb00';
+       }
+       else if(loops == 4){
+           color = 'limegreen';
+       }
+       else if(loops == 5){
+           color = 'blue';
+       }
+   }
+    
+        
+
+
+      
+      
+      
+      
+      
+      
+      
+    </script>
+    
+    
+    
+  </body>
+  
+  
+  
+</html>

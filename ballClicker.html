@@ -1,0 +1,247 @@
+<html>
+  <head>
+    
+    
+  </head>
+  <body>
+    <canvas id="canvas" width="1350" height="630"></canvas>
+    
+    <style>
+    
+    </style>
+    
+    
+    <script>
+      var canvas = document.getElementById('canvas');
+      var canvasContext= canvas.getContext('2d');
+      var mX;
+      var mY;
+      var distance;
+      var score = 0;
+      var time = 20;
+      var framesPerSecond = 100
+      var loop = setInterval(doBoth, 1000/framesPerSecond);
+      var count = setInterval(countdown, 1000);
+        
+
+      
+      
+   window.onload=function(){
+      canvas = document.getElementById('canvas');
+      canvasContext= canvas.getContext('2d');
+      
+      
+ 
+  }
+    function doBoth(){
+      moveEverything();
+      drawEverything();
+      mX = 100000000;
+      mY = 100000000;
+    }
+    function moveEverything(){
+      ball1.move();
+      ball2.move();
+      ball3.move();
+      ball4.move();
+      ball5.move();
+      ball6.move();
+      ball7.move();
+      ball8.move();
+      ball9.move();
+      ball10.move();
+      ball11.move();
+      ball12.move();
+      ball13.move();
+      ball14.move();  
+      ball15.move(); 
+
+      
+    }
+    
+    
+    function drawEverything(){
+      if(time >0){
+      create(0, 0, canvas.width, canvas.height, 'black');
+      ball1.draw();
+      ball2.draw();
+      ball3.draw();
+      ball4.draw();
+      ball5.draw();
+      ball6.draw();
+      ball7.draw();
+      ball8.draw();
+      ball9.draw();
+      ball10.draw();
+      ball11.draw();
+      ball12.draw();
+      ball13.draw();
+      ball14.draw();  
+      ball15.draw(); 
+      canvasContext.font='40px serif'
+      canvasContext.fillStyle='red';
+      canvasContext.fillText('Score: ' +score, 20, 40);  
+      canvasContext.fillText(time, canvas.width/2, 40);  
+      }
+      else{
+          create(0, 0, canvas.width, canvas.height, 'black');
+          canvasContext.fillStyle='red';    
+          canvasContext.font='50px serif';
+          canvasContext.fillText("Time's up! Your score was: " + score, 140, canvas.height/2-30); 
+          canvasContext.fillText("Refresh the page to play again!", 140, canvas.height/2 + 35); 
+      }
+    }
+
+  function create(x, y, width, height, color){
+    canvasContext.fillStyle=color;
+    canvasContext.fillRect(x, y, width, height);
+  }
+
+    function createBall(x, y, r, color){
+      canvasContext.fillStyle=color;
+      canvasContext.beginPath();
+      canvasContext.arc(x, y, r, 0, 2 * Math.PI, false);
+      canvasContext.fill();
+  }  
+        
+        
+    window.onclick=function(e){
+        mX = e.pageX;
+        mY = e.pageY;
+        
+    }
+        
+        
+        
+    class Ball{
+        constructor(){
+            this.ballSpeedY = (Math.random() * 200) /100 + .3;
+            this.ballSpeedX = (Math.random() * 200) /100 + .3;
+            this.r = Math.random() * 20 + 15;
+            this.x = (Math.random()*(canvas.width-2*this.r) + this.r) 
+            this.y = (Math.random()*(canvas.height-2*this.r )+ this.r)
+            if(Math.abs(this.ballSpeedX)>= Math.abs(this.ballSpeedY)){
+                this.scoreValueSpeed = Math.abs(Math.floor(this.ballSpeedX*50));
+            }
+            else{
+                this.scoreValueSpeed = Math.abs(Math.floor(this.ballSpeedY*50));
+            }
+            this.scoreValue = 5*Math.floor((this.scoreValueSpeed/2 + 10*(35-this.r))/15);
+            this.color = "rgb(" + (Math.floor(Math.random()*256)+12) + "," + (Math.floor(Math.random()*256)+12) + "," + (Math.floor(Math.random()*256)+12) + ")";
+            this.randBallX = Math.floor(Math.random() * 2);
+            this.randBallY = Math.floor(Math.random() * 2);    
+        if (this.randBallX == 0){
+           this.ballSpeedX=-this.ballSpeedX;
+      }
+        if (this.randBallY == 0){
+           this.ballSpeedY=-this.ballSpeedY;
+      }
+
+        }
+        draw(){
+            createBall(this.x, this.y, this.r, this.color);
+            canvasContext.font='20px serif'
+            canvasContext.fillStyle='black';
+            canvasContext.fillText(this.scoreValue, this.x-this.r/2, this.y-this.r/2000);
+        }
+        move(){
+            this.x += this.ballSpeedX;
+            this.y += this.ballSpeedY;
+            if (this.x >= canvas.width - this.r){
+                this.ballSpeedX = -this.ballSpeedX;
+            }
+            if (this.x <= 0 + this.r){
+                this.ballSpeedX = -this.ballSpeedX;
+            }
+            if(this.y >= canvas.height - this.r){
+                this.ballSpeedY = -this.ballSpeedY;
+            }
+            if(this.y <= 0 + this.r){
+                this.ballSpeedY = -this.ballSpeedY;
+            }
+            
+            this.distance = Math.sqrt(((mX - this.x)**2) + ((mY-this.y)**2))
+                
+            if (this.distance <= this.r){
+            score+=this.scoreValue;
+            
+            
+            this.reassign();
+            
+      }
+                  
+              }
+        
+        
+        
+        reassign(){
+            this.ballSpeedY = (Math.random() * 200) /100 + 1;
+            this.ballSpeedX = (Math.random() * 200) /100 + 1;
+            this.r = Math.random() * 20 + 15;
+            this.x = (Math.random()*(canvas.width-2*this.r) + this.r) 
+            this.y = (Math.random()*(canvas.height-2*this.r )+ this.r)
+            if(Math.abs(this.ballSpeedX)>= Math.abs(this.ballSpeedY)){
+                this.scoreValueSpeed = Math.abs(Math.floor(this.ballSpeedX*50));
+            }
+            else{
+                this.scoreValueSpeed = Math.abs(Math.floor(this.ballSpeedY*50));
+            }
+            this.scoreValue = 5*Math.floor((this.scoreValueSpeed/2 + 10*(35-this.r))/15);
+            this.color = "rgb(" + (Math.floor(Math.random()*256)+12) + "," + (Math.floor(Math.random()*256)+12) + "," + (Math.floor(Math.random()*256)+12) + ")";
+            this.randBallX = Math.floor(Math.random() * 2);
+            this.randBallY = Math.floor(Math.random() * 2);    
+        if (this.randBallX == 0){
+           this.ballSpeedX=-this.ballSpeedX;
+      }
+        if (this.randBallY == 0){
+           this.ballSpeedY=-this.ballSpeedY;
+      }
+            
+            
+            
+                
+            }
+        
+    }
+       
+       function countdown(){
+           time-=1;
+           console.log(time);
+       }
+        
+
+            
+        
+            
+  
+    
+        
+   var ball1 = new Ball();
+   var ball2 = new Ball();
+   var ball3 = new Ball();
+   var ball4 = new Ball();
+   var ball5 = new Ball();
+   var ball6 = new Ball();
+   var ball7 = new Ball();
+   var ball8 = new Ball();
+   var ball9 = new Ball();
+   var ball10 = new Ball();
+   var ball11= new Ball();
+   var ball12 = new Ball();
+   var ball13 = new Ball();
+   var ball14 = new Ball();
+   var ball15 = new Ball();
+
+      
+      
+      
+      
+    </script>
+    
+    
+    
+  </body>
+  
+  
+  
+</html>
